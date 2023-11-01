@@ -64,7 +64,8 @@ namespace gem5
 {
 
 // Use an separate stack for fatal signal handlers
-static uint8_t fatalSigStack[2 * SIGSTKSZ];
+#define MAX_SIGSTKSZ 32768
+static uint8_t fatalSigStack[2 * MAX_SIGSTKSZ];
 
 static bool
 setupAltStack()

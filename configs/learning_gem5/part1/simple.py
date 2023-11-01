@@ -87,8 +87,11 @@ isa = str(m5.defines.buildEnv['TARGET_ISA']).lower()
 # Default to running 'hello', use the compiled ISA to find the binary
 # grab the specific path to the binary
 thispath = os.path.dirname(os.path.realpath(__file__))
+# binary = os.path.join(thispath, '../../../',
+#                       'tests/test-progs/hello/bin/', isa, 'linux/hello')
+
 binary = os.path.join(thispath, '../../../',
-                      'tests/test-progs/hello/bin/', isa, 'linux/hello')
+                      'benchmarks/sys_validation/spmv/sw/main.elf')
 
 system.workload = SEWorkload.init_compatible(binary)
 

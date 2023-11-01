@@ -450,7 +450,9 @@ LLVMInterface::constructStaticGraph() {
     std::unique_ptr<llvm::LoopInfoBase<llvm::BasicBlock, llvm::Loop>> loopInfo(new llvm::LoopInfoBase<llvm::BasicBlock, llvm::Loop>());
 
     m = llvm::parseIRFile(file, *error, *context);
-    if(!m) panic("Error reading Module");
+    DPRINTF(LLVMInterface, "Error while parsing IR: %s\n", \
+    error->getMessage().str().c_str());
+    if (!m) panic("Error reading Module");
 
     // Construct the LLVM::Value to SALAM::Value map
     uint64_t valueID = 0;
